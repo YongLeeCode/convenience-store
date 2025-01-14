@@ -4,22 +4,17 @@ public class Product {
 
     private String name;
     private Integer price;
-    private Integer quantity;
     private String promotion;
+    private Integer quantity;
 
-    public String getName() {
-        return name;
+    public Product(String name, int price, String promotion, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.promotion = promotion;
+        this.quantity = quantity;
     }
 
-    public Integer getPrice() {
-        return price;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public String getPromotion() {
-        return promotion;
+    public Boolean containsName(String name) {
+        return this.name.contains(name);
     }
 }
