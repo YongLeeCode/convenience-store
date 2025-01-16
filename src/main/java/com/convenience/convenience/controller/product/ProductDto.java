@@ -1,6 +1,4 @@
-package com.convenience.convenience.controller;
-
-import com.convenience.convenience.domain.Product;
+package com.convenience.convenience.controller.product;
 
 public class ProductDto {
 
