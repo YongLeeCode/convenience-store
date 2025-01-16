@@ -1,15 +1,15 @@
 package com.convenience.convenience.repository;
 
 import com.convenience.convenience.domain.Product;
+import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class ListProductRepository implements ProductRepository {
 
     private static final List<Product> products = List.of(
-            new Product("콜라", 1000, "탄산2+1", 10),
+            new Product("콜라", 1000, "탄산2+1", 5),
             new Product("콜라", 1000, null, 10),
             new Product("사이다", 1000, "탄산2+1", 8),
             new Product("사이다", 1000, null, 7),
@@ -36,4 +36,18 @@ public class ListProductRepository implements ProductRepository {
                 .filter(product -> product.containsName(name))
                 .toList();
     }
+
+    public List<Product> findAllByProductPromotion(String promotion) {
+        return products.stream()
+                .filter(product -> product.containsPromotion(promotion))
+                .toList();
+    }
+
+    public List<Product> findAllByProductNameAndPromotion(String name, String promotion) {
+        return products.stream()
+                .filter(product -> product.containsName(name))
+                .filter(product -> product.containsPromotion(promotion))
+                .toList();
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.convenience.convenience.controller;
 
-import com.convenience.convenience.domain.Product;
 import com.convenience.convenience.service.ProductService;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,16 +18,24 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/products", method = RequestMethod.GET)
-    public List<ProductDto> findProducts(@RequestParam(required = false) String name) {
-        if (name == null) {
+    public List<ProductDto> findProducts(@RequestParam(required = false) String name,
+            @RequestParam(required = false) String promotion) {
+        if (name != null && promotion != null) {
+            return productService.findAllByProductNameAndPromotion(name, promotion);
+        } else if (name != null) {
+            return productService.findAllByProductName(name);
+        } else if (promotion != null) {
+            return productService.findAllByProductPromotion(promotion);
+        } else {
             return productService.findAll();
         }
-        return productService.findAllByProductName(name);
     }
 
-//    @RequestMapping(value = "/products", method = RequestMethod.POST)
-//    public Product createProduct(@RequestBody Product product) {
-//        return product;
-//    }
-
+    @RequestMapping(value = "/products", method = RequestMethod.PUT)
+    public String purchaseProducts(
+            @RequestParam String name,
+            @RequestParam Integer quantity
+    ) {
+        return productService.purchaseProduct(name, quantity);
+    }
 }

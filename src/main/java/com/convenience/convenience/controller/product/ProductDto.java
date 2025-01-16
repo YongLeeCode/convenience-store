@@ -24,4 +24,8 @@ public class ProductDto {
     public Integer getQuantity() {
         return quantity;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
