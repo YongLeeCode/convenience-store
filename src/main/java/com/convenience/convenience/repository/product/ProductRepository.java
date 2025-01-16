@@ -1,4 +1,4 @@
-package com.convenience.convenience.repository;
+package com.convenience.convenience.repository.product;
 
 import com.convenience.convenience.domain.Product;
 import java.util.List;

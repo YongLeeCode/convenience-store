@@ -1,7 +1,6 @@
-package com.convenience.convenience.repository;
+package com.convenience.convenience.repository.product;
 
 import com.convenience.convenience.domain.Product;
-import java.util.Arrays;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
